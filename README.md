@@ -1,2 +1,17 @@
-# dna-rnn
-Finding DNA replication sites by using deep learning RNNs
+# A Deep Learning Model for Saccharomyces Cerevisiae
+Saccharomyces Cerevisiae is a species of yeast. It has been instrumental to winemaking, baking, and brewing since ancient times. Studying the origin of replication in cerevisiae genome has been studied for years and the more origins are being dicovered be research labs all over the world.
+
+In this project, we are building a deep learning model that tries to find hidden relationships in the whole genomic sequence of cerevisiae (divided into 16 chromosomes). Training the model on the confirmed replication origin sites, we are expecting that the model is going to confirm or disconfirm other disocvered replication origins that are marked "likely" or "dubious".
+
+## References to datasets
+Whole Genome Sequence: [Saccharomyces Genome Database](http://www.yeastgenome.org/)
+
+Replication Origins: [OriDB](http://cerevisiae.oridb.org/)
+
+## Current Progress
+The project is still under heavy development.
+
+## Contributors
+[Abdelrahman Hosny](http://www.abdelrahmanhosny.me)
+
+[Anthony Parziale](mailto:anthony.parziale@uconn.edu)
