@@ -30,27 +30,31 @@ def char_to_label(value):
     else:
         return 1
 
-input_matrix = []
-labels = []
 
-fasta_sequences = SeqIO.parse(open(chromosome_file),'fasta')
-for fasta in fasta_sequences:
-    name, cerevisie_chromosome = fasta.id, str(fasta.seq)
+def main():
+    input_matrix = []
+    labels = []
 
-fasta_sequences = SeqIO.parse(open(confirmed_origins),'fasta')
-for fasta in fasta_sequences:
-    name, replication_origin = fasta.id, str(fasta.seq)
-    # just a sanity check
-    if replication_origin in cerevisie_chromosome:
-        # convert the replication origin to lowercase in the chromosome
-        seq_row = cerevisie_chromosome.replace(replication_origin, replication_origin.lower())
-        # convert the character vector to a numpy array of numbers
-        input_row = np.array(map(char_to_number, seq_row))
-        label = np.array(map(char_to_label, input_row))
+    fasta_sequences = SeqIO.parse(open(chromosome_file),'fasta')
+    for fasta in fasta_sequences:
+        name, cerevisie_chromosome = fasta.id, str(fasta.seq)
 
-        input_matrix.append(input_row)
-        labels.append(label)
+    fasta_sequences = SeqIO.parse(open(confirmed_origins),'fasta')
+    for fasta in fasta_sequences:
+        name, replication_origin = fasta.id, str(fasta.seq)
+        # just a sanity check
+        if replication_origin in cerevisie_chromosome:
+            # convert the replication origin to lowercase in the chromosome
+            seq_row = cerevisie_chromosome.replace(replication_origin, replication_origin.lower())
+            # convert the character vector to a numpy array of numbers
+            input_row = np.array(map(char_to_number, seq_row))
+            label = np.array(map(char_to_label, input_row))
 
-input_matrix = np.array(input_matrix)
-labels = np.array(labels)
-print input_matrix
+            input_matrix.append(input_row)
+            labels.append(label)
+
+    input_matrix = np.array(input_matrix)
+    labels = np.array(labels)
+    return input_matrix, labels
+
+
